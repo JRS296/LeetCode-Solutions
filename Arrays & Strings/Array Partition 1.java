@@ -182,7 +182,7 @@ Time exceeded - changing sorting algo
  */ 
 
 //Attempt 3 - with better sorting algo
-class Solution {
+class Solution4 {
     public int arrayPairSum(int[] nums) {
         if(nums.length%2 != 0)
             return 0;

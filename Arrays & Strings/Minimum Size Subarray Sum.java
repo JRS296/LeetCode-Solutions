@@ -60,3 +60,14 @@ Memory Usage: 58.5 MB
 
 Time Complexity: O(n)
  */
+
+ /*
+Explanation: pointer j handles looping through all elements of array,
+sum is decided depending on each array element with each pass of j,
+sum is checked each iteration
+While sum is greater than or equal to ss:
+    Update ans=min(ans,i+1−left), where i+1−left is the size of current subarray
+    It means that the first index can safely be incremented, since, the minimum subarray 
+    starting with this index with sum≥s has been achieved
+    Subtract nums[left] from sum and increment left
+ */
