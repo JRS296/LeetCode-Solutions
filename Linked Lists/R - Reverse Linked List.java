@@ -1,5 +1,5 @@
 //Attempt #1 - Link: https://leetcode.com/submissions/detail/799034113/?from=explore&item_id=1205
-
+//YT Link - https://www.youtube.com/watch?v=NhapasNIKuQ
 
 /**
  * Definition for singly-linked list.
@@ -11,17 +11,20 @@
  * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
  * }
  */
-class Solution {
+public class Solution {
     public ListNode reverseList(ListNode head) {
-        /* iterative solution */
-        ListNode newHead = null;
-        while (head != null) {
-            ListNode next = head.next;
-            head.next = newHead;
-            newHead = head;
-            head = next;
+    	if(head == null) return head;
+    	
+    	ListNode next = head.next;
+    	head.next = null;
+        
+    	while(next != null){
+        	ListNode temp = next.next;
+        	next.next = head;
+        	head = next;
+        	next = temp;
         }
-        return newHead;
+    	return head;
     }
 }
 /*
