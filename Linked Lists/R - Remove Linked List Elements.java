@@ -56,3 +56,4 @@ class Solution2 {
     }
 }
 
+//Explanation Image: https://leetcode.com/problems/odd-even-linked-list/Figures/328_Odd_Even.svg
