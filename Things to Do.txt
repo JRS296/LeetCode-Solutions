@@ -8,3 +8,4 @@ Things to Do:
 6) implement Linked List
 7) Prepare Notes for Linked Lists
 8) Copy List with Random Pointer
+9) Documentation on arraycopy
