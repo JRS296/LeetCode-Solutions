@@ -9,3 +9,4 @@ Things to Do:
 7) Prepare Notes for Linked Lists
 8) Copy List with Random Pointer
 9) Documentation on arraycopy
+10) Learn how to implement all data structres
