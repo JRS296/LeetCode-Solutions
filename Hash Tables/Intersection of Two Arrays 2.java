@@ -31,5 +31,8 @@ public class Solution {
 }
 
 /*
-
+56 / 56 test cases passed.
+Status: Accepted
+Runtime: 6 ms
+Memory Usage: 43.9 MB
  */
