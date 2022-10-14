@@ -107,3 +107,5 @@ public static int throwTheBall(List<Integer> receiver, long seconds) {
     }
     return hasBall;
 }
+
+//Time Limit Exceeded
