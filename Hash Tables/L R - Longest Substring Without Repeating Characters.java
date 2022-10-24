@@ -77,4 +77,39 @@ class Solution {
 407 / 987 test cases passed.
  */
 
-//Attempt #3 - 
+//Answer:
+//Link: https://leetcode.com/explore/learn/card/hash-table/187/conclusion-hash-table/1135/discuss/2133524/JavaC++-A-reall-Detailed-Explanation
+
+//VERY VERY IMPORTANT: How to Solve Sliding Window Problems
+
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        int i = 0;
+        int j = 0;
+        int max = 0;
+        while(j < s.length()){
+            map.put(s.charAt(j), map.getOrDefault(s.charAt(j), 0) + 1);
+            if(map.size() == j - i + 1){
+                max = Math.max(max, j - i + 1);
+                j++;
+            }
+            else if(map.size() < j - i + 1){
+                while(map.size() < j - i + 1){
+                    map.put(s.charAt(i), map.get(s.charAt(i)) - 1);
+                    if(map.get(s.charAt(i)) == 0) map.remove(s.charAt(i));
+                    i++;
+                }
+                j++;
+            }
+        }
+        return max;
+    }
+}
+
+/*
+987 / 987 test cases passed.
+Status: Accepted
+Runtime: 23 ms
+Memory Usage: 44.7 MB
+ */
