@@ -37,6 +37,7 @@ class Solution {
  */
 
 // Attempt #2 - null
+//Important Point - See use case of mid to mid+k
 public List<Integer> findClosestElements(int[] A, int k, int x) {
     int left = 0, right = A.length - k;
     while (left < right) {
@@ -58,7 +59,6 @@ Memory Usage: 62.5 MB
  */
 
 // Optimal #1 - using two pointers - O(n)
-
 class Solution2 {
     public List<Integer> findClosestElements(int[] arr, int k, int x) {
         int lo = 0;
