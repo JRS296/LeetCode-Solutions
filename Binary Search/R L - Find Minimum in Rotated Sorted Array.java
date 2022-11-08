@@ -94,3 +94,5 @@ class Solution2 {
         return Integer.MAX_VALUE;
     }
 }
+
+//Understand Case scenario, and the 4 possible breakpoints (the 4 if conditions)
