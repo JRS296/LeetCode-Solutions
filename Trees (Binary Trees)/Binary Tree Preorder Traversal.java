@@ -30,21 +30,21 @@ class Solution {
 
 // Iterative - using stack to monitor visited
 class Solution2 {
-    public List<Integer> preorderIt(TreeNode root) {
-        List<Integer> pre = new LinkedList<Integer>();
-        if (root == null)
-            return pre;
-        Stack<TreeNode> tovisit = new Stack<TreeNode>();
-        tovisit.push(root);
-        while (!tovisit.empty()) {
-            TreeNode visiting = tovisit.pop();
-            pre.add(visiting.val);
-            if (visiting.right != null)
-                tovisit.push(visiting.right);
-            if (visiting.left != null)
-                tovisit.push(visiting.left);
+    public List<Integer> preorderTraversal(TreeNode root) {
+        List<Integer> OP = new ArrayList<Integer>();
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+        TreeNode cur = root;
+        while (!stack.isEmpty() || cur != null) {
+            if (cur != null) {
+                OP.add(cur.val);
+                stack.push(cur);
+                cur = cur.left;
+            } else {
+                cur = stack.pop();
+                cur = cur.right;
+            }
         }
-        return pre;
+        return OP;
     }
 }
 /*

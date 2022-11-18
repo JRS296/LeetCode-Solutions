@@ -30,22 +30,22 @@ class Solution {
 // Iterative - using stack to monitor visited
 class Solution2 {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> list = new ArrayList<Integer>();
-
+        List<Integer> OP = new ArrayList<Integer>();
         Stack<TreeNode> stack = new Stack<TreeNode>();
         TreeNode cur = root;
 
-        while (cur != null || !stack.empty()) {
-            while (cur != null) { //Reach left most node first at each interval
-                stack.add(cur);
+        while (!stack.empty() || cur != null) {
+            if (cur != null) {
+                stack.push(cur);
                 cur = cur.left;
+            } else {
+                cur = stack.pop();
+                OP.add(cur.val);
+                cur = cur.right;
             }
-            cur = stack.pop();
-            list.add(cur.val);
-            cur = cur.right;
         }
 
-        return list;
+        return OP;
     }
 }
 /*
