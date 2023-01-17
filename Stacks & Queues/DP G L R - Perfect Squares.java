@@ -64,6 +64,53 @@ Time: O(n^2)
 Space: O(n)
  */
 
+//Optimal Soln - Using BFS
+
+// The DP solution is the most popular one, yet somehow I feel like the bfs solution share some light on a more general problem type. Here is the bfs solution. The idea is: a dp array is used to store the original square number, it is initialized as 1. Each time we poll a number from the queue and check each perfect square number. When n is reached, it is the shortest path and dp array gives the result. When the sum is over n, we break. When less than n, we need another round of bfs. dp[curr + i*i] == 0 when it has not been visited before, so we don't need a separate visited array.
+
+public class Solution {
+    public int numSquares(int n) {
+        if (n <= 0) {
+            return 0;
+        }
+        int[] dp = new int[n+1];
+        Queue<Integer> q = new LinkedList<>();
+        for (int i = 1; i*i <= n; i++) {
+            if(i*i == n) {
+                return 1;
+            }
+            dp[i*i] = 1;
+            q.offer(i*i);
+        }
+        while (!q.isEmpty()) {
+            int curr = q.peek();
+            for (int i = 1; i*i <= n-curr; i++) {
+                if (curr + i*i == n) {
+                    return dp[curr] + 1;
+                } else if ((curr + i*i < n) && (dp[curr + i*i] == 0)) {
+                    dp[curr + i*i] = dp[curr] + 1;
+                    q.offer(curr + i*i);
+                } else if (curr + i*i > n) {
+                    break;
+                }
+            }
+            q.poll();
+        }
+        return 0;
+    }
+}
+
+/*
+Runtime
+11 ms
+Beats
+91.90%
+Memory
+42.2 MB
+Beats
+71.12%
+ */
+
 //Optimal Solution - using DP 
 //Didnt know this was a DP q tbh, came close tho
 
