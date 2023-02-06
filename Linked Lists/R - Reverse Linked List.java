@@ -47,3 +47,48 @@ Memory Usage: 42.8 MB
 // head.next = newHead;
 // return reverseListInt(next, head);
 // }
+
+//Attempt #2 - using Linked list
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        Stack<ListNode> stk = new Stack<ListNode>();
+        while(head!=null)
+        {
+            //System.out.println(head.val);
+            stk.push(head);
+            head = head.next;
+        }
+        int len = stk.size();
+        ListNode tans = new ListNode(0);
+        ListNode fans = tans;
+        for(int i=0; i<len; i++)
+        {
+            tans.next = new ListNode(stk.pop().val);
+            tans = tans.next;
+        }
+        //System.out.println(stk);
+        return fans.next;
+    }
+}
+
+/*
+Runtime
+1 ms
+Beats
+14.99%
+Memory
+41.9 MB
+Beats
+74.65%
+ */
