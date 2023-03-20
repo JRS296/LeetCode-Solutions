@@ -112,4 +112,7 @@ class Solution {
 Status: Accepted
 Runtime: 23 ms
 Memory Usage: 44.7 MB
+
+TC - O(n)
+SC - O(n)
  */
