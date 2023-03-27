@@ -77,3 +77,55 @@ class Solution {
 /*
 Time Limit Exceeded
  */
+
+//Attempt #2 - 10 mins (+ saw soln logic)
+
+/*
+								   	(0, 0, '')
+								 	    |	
+									(1, 0, '(')  
+								   /           \
+							(2, 0, '((')      (1, 1, '()')
+							   /                 \
+						(2, 1, '(()')           (2, 1, '()(')
+						   /                       \
+					(2, 2, '(())')                (2, 2, '()()')
+						      |	                             |
+					res.append('(())')             res.append('()()')
+   */
+
+   class Solution {
+    public List<String> generateParenthesis(int n) {
+        List<String> ans = new ArrayList<String>();
+        helper(ans, 0, 0, "", n);
+        return ans;
+    }
+
+    public void helper(List<String> ans, int left, int right, String st, int n) {
+        //Termination Condition - st.length == n*2
+        if(st.length() == n*2) {
+            ans.add(st);
+            return;
+        }
+        if (left < n) {
+            helper(ans, left+1, right, st+"(", n);
+        }
+        if (right < left) {
+            helper(ans, left, right+1, st+")", n);
+        }
+    }
+}
+
+/*
+Runtime
+1 ms
+Beats
+92.30%
+Memory
+42.3 MB
+Beats
+70.1%
+
+TC - O(log n)
+SC - Stack Mem
+ */
