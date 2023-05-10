@@ -27,3 +27,31 @@ Memory
 Beats
 64.97%
  */
+
+//Attempt #2 - got the idea down, just got confused with O(n) implementations
+
+class Solution {
+    public int maxProfit(int[] prices) {
+        int buy = Integer.MAX_VALUE;
+        int profit = 0;
+
+        for(int i=0; i<prices.length ; i++) {
+            buy = Math.min(buy,prices[i]);
+            profit = Math.max(profit,prices[i]-buy);
+            //System.out.println(buy + " " + profit);
+        }
+
+        return profit;
+    }
+}
+
+/*
+Runtime
+2 ms
+Beats
+92.89%
+Memory
+59.5 MB
+Beats
+20.38%
+ */

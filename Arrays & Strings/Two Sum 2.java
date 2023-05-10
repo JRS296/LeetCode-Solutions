@@ -110,3 +110,36 @@ Runtime: 8 ms
 Memory Usage: 49.9 MB
 Time Complexity: O(n) 
  */
+
+//Solution - 7mins
+
+class Solution {
+    public int[] twoSum(int[] numbers, int target) {
+        int arr[] = new int[2];
+        int i=0, j=numbers.length-1;
+        while(i<j) {
+            if(numbers[i]+numbers[j]>target) j--;
+            if(numbers[i]+numbers[j]<target) i++;
+            if(numbers[i]+numbers[j]==target) {
+                    arr[0] = i+1; arr[1] = j+1;
+                    break;
+                }
+        }
+
+        return arr;
+    }
+}
+
+/*
+Runtime
+2 ms
+Beats
+36.67%
+Memory
+45.7 MB
+Beats
+6.97%
+
+TC - O(log n)
+SC - O(1)
+ */
