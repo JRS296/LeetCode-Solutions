@@ -1,61 +1,77 @@
-//Attempt #1 - 5mins
-//Link: https://leetcode.com/explore/learn/card/recursion-i/255/recursion-memoization/1661/
-
-class Solution {
+class Solution { //Recursive
     public int fib(int N) {
-        HashMap<Integer, Integer> cache = new HashMap<Integer, Integer>();
-        if (cache.containsKey(N)) {
-      return cache.get(N);
-    }
-    int result;
-    if (N < 2) {
-      result = N;
-    } else {
-      result = fib(N-1) + fib(N-2);
-    }
-    // keep the result in cache.
-    cache.put(N, result);
-    return result;
+        if(N==0) return 0;
+        if(N==1) return 1;
+        return fib(N-1)+fib(N-2);
     }
 }
-
 /*
+Recursive:
+Runtime
+11 ms
+Beats
+8.26%
+Memory
+39.5 MB
+Beats
+44.76%
 
-31 / 31 test cases passed.
-Status: Accepted
-Runtime: 245 ms
-Memory Usage: 41.4 MB
+TC - 2^n
+SC - Recursive Stack Mem
+*/
 
-HORRIBLY SLOW
- */
+class Solution { //Top Down
+  static int arr[] = new int[100];
+  public int fib(int N) {
+      if(N==0 || N==1) return N;
+      if(arr[N]!=0) return arr[N];
 
-//My optimal non recursive soln
-class Solution {
+      arr[N] = fib(N-1)+fib(N-2);
+      return arr[N];
+  }
+}
+/*
+Recursive + Memoization
+Runtime
+0 ms
+Beats
+100%
+Memory
+39.8 MB
+Beats
+23.12%
+
+TC - O(n)
+SC - Recursive + O(n)
+*/
+
+class Solution { //Bottom Up
   public int fib(int N) {
       if(N==0 || N==1)
           return N;
       int arr[] = new int[N+1];
       arr[0] = 0;
       arr[1] = 1;
-      
-      
+
       int ans = 0;
       for(int i=2; i<N+1; i++)
       {
           arr[i] = arr[i-1] + arr[i-2];
-      }
-      
+      }  
       return arr[N];
   }
 }
-
 /*
+Bottom Up - Iterative - Full Memoization
 Runtime
 0 ms
 Beats
 100%
 Memory
-38.9 MB
+39.5 MB
 Beats
-87.68%
- */
+57.77%
+
+TC - O(n)
+SC - O(n)
+*/
