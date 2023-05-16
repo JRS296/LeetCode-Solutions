@@ -54,3 +54,64 @@ Memory
 Beats
 90.26%
  */
+
+//New Attempt - 15mins - full cheese
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)return head;
+
+        ArrayList<Integer> arr = new ArrayList<Integer>();
+        while(head!=null) {
+            arr.add(head.val);
+            head = head.next;
+        }
+
+        int arrSize = 0;
+        if(arr.size()%2!=0) arrSize = arr.size()-1;
+        else arrSize = arr.size();
+
+        for(int i=0; i<arrSize; i++) {
+            if(i%2==0) {
+                int temp = arr.get(i);
+                arr.set(i,arr.get(i+1));
+                arr.set(i+1, temp);
+            }
+        }
+
+        ListNode ans = new ListNode(0);
+        ListNode finAns = ans;
+        for(int i=0; i<arr.size(); i++) {
+            ListNode x = new ListNode(arr.get(i));
+            ans.next = x;
+            ans = ans.next;
+        }
+
+        return finAns.next;
+    }
+}
+
+/*
+O(N)
+O(n)
+ */
+
+
+//Optimal
+
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+        if(head == null || head.next == null)return head;
+        ListNode d = new ListNode(0), a;
+        d.next = head;
+        a=d;
+        while(head!=null&&head.next!=null) {
+            a.next = head.next;
+            head.next = head.next.next;
+            a.next.next = head;
+            a = a.next.next;
+            head =  head.next;
+        }
+        return d.next;
+    }
+}
