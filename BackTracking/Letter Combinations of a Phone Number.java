@@ -94,3 +94,49 @@ public class Solution {
  * Time Complexity: O(4^n)
  * Space Complexity: O(n);
  */
+
+//Another Attempt - 15mins
+
+class Solution {
+    List<String> ans = new ArrayList<String>();
+    StringBuilder sb = new StringBuilder();
+    String arr[] = {"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+
+    public List<String> letterCombinations(String digits) {
+        if(digits.length() == 0) return ans;
+
+        helper(0, digits, digits.length());
+
+        return ans;
+    }
+
+    public void helper (int x, String digits, int n) {
+        if (x == n) {
+            ans.add(sb.toString());
+            return;
+        }
+
+        int val = digits.charAt(x) - '0';
+        String temp = arr[val];
+
+        for(int i=0; i<temp.length(); i++) {
+            sb.append(temp.charAt(i));
+            helper(x+1, digits, n);
+            sb.deleteCharAt(sb.length() - 1);
+        }
+    }
+}
+
+/*
+Runtime
+0 ms
+Beats
+100%
+Memory
+41 MB
+Beats
+93.28%
+
+TC - O(2^n)
+SC - O(n)
+ */
