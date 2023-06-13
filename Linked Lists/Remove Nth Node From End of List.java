@@ -87,3 +87,40 @@ Runtime: 1 ms
 Memory Usage: 42.5 MB
  */
 // Keypoint - Using extra space - for listnode x 
+
+//Another Optimal:
+
+class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+       ListNode start = new ListNode();
+        start.next = head;
+        ListNode fast = start;
+        ListNode slow = start;     
+
+        for(int i = 1; i <= n; ++i)
+            fast = fast.next;
+    
+        while(fast.next != null)
+        {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        
+        slow.next = slow.next.next;
+        
+        return start.next; 
+    }
+}
+
+/*
+Runtime
+0 ms
+Beats
+100%
+Memory
+40.8 MB
+Beats
+50.19%
+
+TC - O(n)
+ */
