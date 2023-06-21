@@ -55,3 +55,35 @@ Space Complexity: O(1)
  */
 
 //Optimal Solution - Using Binary Search? (will also use mlogn solution)
+
+//Optimal Solution - Using LinkedList
+
+class Solution {
+        public int findDuplicate(int[] nums) {
+        int slow = 0;
+        int fast = 0;
+        do {
+            slow = nums[slow];
+            fast = nums[nums[fast]];
+        } while (slow != fast);
+
+        slow = 0;
+        while (slow != fast) {
+            slow = nums[slow];
+            fast = nums[fast];
+        }
+        
+        return slow;
+    }
+}
+
+/*
+ Runtime
+4 ms
+Beats
+87.84%
+Memory
+57.1 MB
+Beats
+50.50%
+ */
