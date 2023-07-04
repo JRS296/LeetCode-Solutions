@@ -1,6 +1,9 @@
 //Attempt #1 - 10mins
 //Link: https://leetcode.com/problems/permutations/description/
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
     List<List<Integer>> ans = new ArrayList<List<Integer>>();
     public List<List<Integer>> permute(int[] nums) {
