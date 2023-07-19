@@ -1,3 +1,4 @@
+package Intervals;
 //Attempt #1 - null
 //Link: https://leetcode.com/problems/insert-interval/description/
 
